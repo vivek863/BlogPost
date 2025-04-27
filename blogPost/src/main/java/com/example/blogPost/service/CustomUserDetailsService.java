@@ -1,6 +1,6 @@
 package com.example.blogPost.service;
 
-import com.example.blogPost.model.User;
+import com.example.blogPost.model.BlogUser;
 import com.example.blogPost.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.*;
@@ -15,7 +15,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // Using name instead of email
-        User user = userRepository.findByUsername(username)
+        BlogUser user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
         return new org.springframework.security.core.userdetails.User(
